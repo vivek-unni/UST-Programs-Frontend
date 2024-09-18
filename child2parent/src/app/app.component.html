@@ -1,0 +1,11 @@
+<body>
+  <div class="container">
+    <h1>Parent Component</h1>
+    <div *ngFor="let child of childItemArr">
+      {{child}}
+    </div>
+  </div>
+</body>
+
+<app-child (childEvent)="childEvent($event)"></app-child>
+<router-outlet />

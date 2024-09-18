@@ -1,0 +1,32 @@
+<div class="container">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()" style="display: flex; flex-direction: column; padding: 20px;row-gap: 10px;">
+        <label for="">ProductId : </label>
+        <input type="text" formControlName="productid" />
+        
+        <label for="">Brand : </label>
+        <input type="text" formControlName="brand" />
+
+        <div formGroupName="description">
+            <label for="">Age : <input type="text" formControlName="age" /></label>
+            <label>Seasons : <input type="text" formControlName="seasons"></label>
+        </div>
+        <label for="">Quantity : </label>
+        <input type="text" formControlName="qty" />
+
+        <label for="">Price : </label>
+        <input type="text" formControlName="price" />
+
+        <div formArrayName="suppliers">
+            <label for="">Suppliers</label>
+            <button (click)="addNewSupplier()">Add New Supplier</button>
+
+            <div *ngFor="let supplier of suppliers.controls;let i=index">
+                <label for="">New Supplier : 
+                    <input type="text" [formControlName]="i" />
+                </label>
+            </div>
+        </div>
+
+        <button type="submit" [disabled]="!productForm.valid">Submit</button>
+    </form>
+</div>

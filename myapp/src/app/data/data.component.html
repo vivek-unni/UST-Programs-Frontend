@@ -1,0 +1,111 @@
+<p>data works!</p>
+<div class="container1">
+    <h2>Data Component</h2>
+
+    <div class="container2" style="margin-bottom:20px;border:solid 3px black; padding: 20px  ;">
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="">ProductId : </label>
+                <input type="text" 
+                    class="form-control"
+                    id="name"
+                    minlength="8"
+                    required
+                    [(ngModel)]="product.productId"
+                    name="productId"
+                    #productId="ngModel"
+                />
+                <div 
+                    *ngIf="productId.invalid && productId.touched"
+                    class="alert"
+                >
+                    <div *ngIf="productId.errors?.['required']" >ProductId is REQUIRED</div>
+                    <div *ngIf="productId.errors?.['minlength']">ProductId must be atleast 8 chars long</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Brand : </label>
+                <input type="text" 
+                    class="form-control"
+                    id="brand"
+                    required
+                    [(ngModel)]="product.brand"
+                    name="brand"
+                    #brand="ngModel"
+                />
+                <div 
+                    *ngIf="brand.invalid && brand.touched"
+                    class="alert"
+                >
+                    <div *ngIf="brand.errors?.['required']" >Brand Name is REQUIRED</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Description : </label>
+                <input type="text" 
+                    class="form-control"
+                    id="description"
+                    required
+                    [(ngModel)]="product.description"
+                    name="description"
+                    #description="ngModel"
+                />
+                <div *ngIf="description.invalid && description.touched" class="alert">
+                    <div *ngIf="description.errors?.['required']">Give Description</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Quantity</label>
+                <input type="text" 
+                    class="form-control"
+                    id="quantity"
+                    required
+                    [(ngModel)]="product.qty"
+                    name="quantity"
+                    #quantity="ngModel"
+                />
+                <div *ngIf="quantity.invalid && quantity.touched" class="alert">
+                    <div *ngIf="quantity.errors?.['required']">Quantity is Required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="">Price : </label>
+                <input type="text" 
+                    class="form-control"
+                    id="price"
+                    required
+                    [(ngModel)]="product.price"
+                    name="price"
+                    #price="ngModel"
+                />
+                <div *ngIf="price.invalid && price.touched" class="alert">
+                    <div *ngIf="price.errors?.['required']">Price is Required</div>
+                </div>
+            </div>
+            <button type="submit" >Submit</button>
+        </form>
+    </div>
+
+
+
+
+
+    <div class="filtertest" style="padding: 20px;border: 2px solid black;">
+        <div>
+            <input type="text" name="filter-data" id="filter-data" [(ngModel)]="filter">
+            <input type="range" name="price-range" id="price-range" min="0" max="60001" [(ngModel)]="maxPrice">
+            <span>Max Price: {{ maxPrice }}</span>
+            <p>Number of loops (filtered products): {{ countChange() }}</p>
+        </div>
+        <div class="forloop" >
+                <div *ngFor="let product of filteredProducts" >
+                    <p><strong>Product ID:</strong> {{ product.productId }}</p>
+                    <p><strong>Brand:</strong> {{ product.brand }}</p>
+                    <p><strong>Description:</strong> {{ product.description }}</p>
+                    <p><strong>Quantity:</strong> {{ product.qty }}</p>
+                    <p><strong>Price:</strong> {{ product.price }}</p>
+                    <hr>
+                </div>
+        </div>
+    </div>
+</div>

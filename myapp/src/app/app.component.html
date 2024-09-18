@@ -1,0 +1,92 @@
+<div style="border: solid 2px green; padding: 10px;">
+
+  <form (ngSubmit)="send()">
+    <input type="text" name="titletest" [(ngModel)]="titletest" />
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div style="border: solid 2px rgb(25, 0, 255);" *ngIf="flag===true">
+    <app-color [title]="titletest">    
+    </app-color>
+  </div>
+
+  <h2>Product Data</h2>
+  <p>Product ID : {{ productid }}</p>
+  <p>Description : {{ description }}</p>
+  <p>Instock : {{ available }}</p>
+  <p>Quantity : {{ qty }}</p>
+  <p>Enter Order Quantity: <input type="text" name="orderqty" id="" [(ngModel)]="orderqty" #inputqty>{{ orderqty }}</p>
+
+
+  <div [ngSwitch]="inputqty.value">
+    <span *ngSwitchCase="200">..No Quantity Available</span>
+    <span *ngSwitchCase="300">..Exact Quantity Available</span>
+    <span *ngSwitchCase="400">..Full Quantity Available</span>
+    <span *ngSwitchDefault>..Check your input</span>
+
+
+  </div>
+  <p>Delivery : <span [style.background-color] = "deliverColor">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+  <div [innerHTML]="isorderedQtyAvailable"></div>
+  <p><button name="placeOrder" (click)="printOrder(inputqty.value)">Place Order</button></p>
+  
+  <div *ngIf="qty > orderqty; else myTemplate">Ordered Quantity Available</div>
+  <ng-template #myTemplate> Ordered quantity Not Available </ng-template>
+  
+  <div *ngFor="let product of products; index as i; even as isEven; odd as isOdd">
+    <span *ngIf="isEven" [style.background-color]="even_color">
+      {{ i }}
+      {{ product.productId }}
+      {{ product.description }}
+      {{ product.price }}
+    </span>
+    <span *ngIf="isOdd" [style.background-color]="odd_color">
+      {{ i }}
+      {{ product.productId }}
+      {{ product.description }}
+      {{ product.price }}
+    </span>
+  </div>
+
+  <h1>List of Products</h1>
+  <div *ngFor= "let product of products">
+    {{product.productId}}
+    {{product.description}}
+    {{product.price}}
+  </div>
+
+  {{ orderDate | date: "dd/MM/yyyy" }}
+</div>
+
+
+
+<div style="border: solid 2px rgb(0, 47, 128);background-color: rgba(180, 81, 173, 0.639);">
+  <app-data>
+  </app-data>
+</div>
+
+<div style="border: solid 2px rgb(128, 0, 66);padding: 20px;background-color: beige;">
+  <app-reactive>
+  </app-reactive>
+</div>
+<div style="background-color: rgba(180, 81, 81, 0.639);border: solid 2px rgb(128, 0, 66);padding: 20px;">
+  <app-formbuilder>
+  </app-formbuilder>
+</div>
+<div style="border: solid 2px rgb(128, 0, 66);padding: 20px;background-color: rgba(81, 127, 180, 0.639);">
+    <app-test-observable>
+    </app-test-observable>
+</div>
+<div style="border: solid 2px rgb(128, 0, 66);padding: 20px;background-color: rgba(81, 180, 165, 0.639);">
+  <app-create>
+  </app-create>
+</div>
+<div style="border: solid 2px rgb(128, 0, 66);padding: 20px;background-color: rgba(180, 157, 81, 0.639);">
+  <app-display>
+  </app-display>
+</div>
+<div style="border: solid 2px rgb(128, 0, 66);padding: 20px;background-color: rgba(180, 157, 81, 0.639);">
+  <app-token>
+  </app-token>
+</div>

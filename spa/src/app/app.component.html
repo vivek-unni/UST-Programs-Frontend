@@ -1,0 +1,15 @@
+
+<h1>Hello, spa</h1>
+<nav>
+  <h3><a routerLink='/home'>Home</a></h3>
+  <h3><a routerLink='/register'>Register</a></h3>
+  <h3><a routerLink='/aboutus'>About Us</a></h3>
+</nav>
+<hr>
+<div>
+  <h3><button (click)="changeRoute('home')">HOME</button></h3>
+  <h3><button (click)="changeRoute('aboutus')">ABOUT US</button></h3>
+  <h3><button (click)="changeRoute('register')">REGISTER</button></h3>
+</div>
+<hr>
+<router-outlet />

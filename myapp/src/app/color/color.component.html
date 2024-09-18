@@ -1,0 +1,27 @@
+<div class="container" style="padding: 20px;">
+    <p>Color is coloring</p>
+
+    <h1>{{ title}}</h1>
+
+    <form (change)="onColorChange($event)" id="color-change-radio-form">
+        <h1>USING a function in components.ts</h1>
+        <input type="radio" name="bg-color-form" id="red-color-form" value="red" (change)="onColorChange($event)"><label for="red-color-form">RED</label><br>
+        <input type="radio" name="bg-color-form" id="green-color-form" value="green" (change)="onColorChange($event)"><label for="green-color-form">GREEN</label><br>
+        <input type="radio" name="bg-color-form" id="blue-color-form" value="blue" (change)="onColorChange($event)"><label for="blue-color-form">BLUE</label>
+    </form>
+
+    <div id="color-change-radio-div" [style.background-color]="selectedColor">
+        <h1>USING ngModel</h1>
+        <input type="radio" name="bg-color-div" id="red-color-div" value="red" [(ngModel)]="selectedColor"><label for="red-color-div">RED</label><br>
+        <input type="radio" name="bg-color-div" id="green-color-div" value="green" [(ngModel)]="selectedColor"><label for="green-color-div">GREEN</label><br>
+        <input type="radio" name="bg-color-div" id="blue-color-div" value="blue" [(ngModel)]="selectedColor"><label for="blue-color-div">BLUE</label>
+    </div>
+
+    <h1>Basic Math Functions using a single number : </h1>
+    <input type="text" name="num" id="num" placeholder="Enter a number">
+    <br>
+    <!-- <button name="Factorial" (click)="factorial(num.value)">Place Order</button>
+    <button name="Square" (click)="square(num.value)">Place Order</button>
+    <button name="Cube" (click)="cube(num.value)">Place Order</button> -->
+
+</div>

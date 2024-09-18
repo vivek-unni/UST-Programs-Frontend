@@ -1,0 +1,43 @@
+<p>display works!</p>
+<body style="display: flex; flex-direction: row;column-gap: 30px;padding: 10px; background-color: rgba(255, 208, 105, 0.493);align-items: center;justify-content: center;">
+    <div class="display-all">
+        <button type="submit" class="btn btn-success" (click)="displayAll()">Display All</button>
+    </div>
+    
+    <div class="container">
+        <div class="forloop" >
+            <div *ngFor="let product of RecProducts" >
+                <p><strong>Product ID:</strong> {{ product.productId }}</p>
+                <p><strong>Brand:</strong> {{ product.brand }}</p>
+                <p><strong>Description:</strong> {{ product.description }}</p>
+                <p><strong>Quantity:</strong> {{ product.qty }}</p>
+                <p><strong>Price:</strong> {{ product.price }}</p>
+                <hr>
+            </div>
+        </div>
+    </div>    
+
+    <div class="display-by-id" style="display: flex; flex-direction: column;">
+        <input type="text" name="productid" id="productid" placeholder="Enter Product ID" [(ngModel)]="productId"/>
+        <button type="submit" class="btn btn-success" (click)="displayById(productId)">Display</button>
+    </div>
+    
+
+
+    <div class="display-by-brand" style="display: flex; flex-direction: column;">
+        <input type="text" name="brand" id="brand" placeholder="Enter Product Brand" [(ngModel)]="brand"/>
+        <button type="submit" class="btn btn-success" (click)="displayByBrand(brand)">Display</button>
+    </div>
+
+    <div class="container">
+        <div class="forloop" >
+                <p><strong>Product ID:</strong> {{ product.productId }}</p>
+                <p><strong>Brand:</strong> {{ product.brand }}</p>
+                <p><strong>Description:</strong> {{ product.description }}</p>
+                <p><strong>Quantity:</strong> {{ product.qty }}</p>
+                <p><strong>Price:</strong> {{ product.price }}</p>
+                <hr>
+        </div>
+    </div>
+    
+</body>

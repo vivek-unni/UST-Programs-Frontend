@@ -1,0 +1,79 @@
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+* {
+    margin:0px;
+    padding:0px;
+}
+
+.title{
+    margin:0;
+}
+
+body{
+    color: rgb(30, 30, 30);
+    font-size: 18px;
+    font-family: "Vibur", sans-serif;
+}
+
+header{
+    padding: 20px;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    text-align: justify;
+    margin-bottom: -20px;
+    padding-bottom: -20px;
+}
+
+.content-list{
+    
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    column-gap: 30px;
+    list-style-type: none;
+    margin: 0;
+}
+
+a{
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+
+.home-img {
+    width: 450px;
+    transition: transform 0.3s ease; // Smooth transition for transform
+
+    &:hover {
+        animation: bobbing 3s ease-in-out infinite; // Apply the bobbing animation on hover
+    }
+}
+
+@keyframes bobbing {
+    0% {
+        transform: translateY(0); // Start position
+    }
+    50% {
+        transform: translateY(-20px); // Move up
+    }
+    100% {
+        transform: translateY(0); // End position (back to start)
+    }
+}
+
+.home{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.para-me{
+    align-content: center;
+}
+
